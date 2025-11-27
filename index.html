@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NO钱包 - APP激活教程</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 50%, #E0F6FF 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* 顶部APP卡片 */
+        .app-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 24px 32px;
+            text-align: center;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .app-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: -40px auto 20px;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 16px rgba(0, 102, 255, 0.3);
+        }
+
+        .app-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin: 16px 0 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-icon {
+            width: 48px;
+            height: 48px;
+            background: transparent;
+            border: 2px solid #0066FF;
+            color: #0066FF;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .btn-icon:hover {
+            background: #F0F4FF;
+        }
+
+        /* 教程卡片 */
+        .tutorial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .tutorial-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .app-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 0;
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: #C4A878;
+            border-radius: 16px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .app-info {
+            flex: 1;
+        }
+
+        .app-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .app-subtitle {
+            font-size: 12px;
+            color: #0066FF;
+            margin-bottom: 4px;
+        }
+
+        .app-author {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .app-platform {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .app-price {
+            font-size: 12px;
+            color: #0066FF;
+            font-weight: 600;
+        }
+
+        .warning-box {
+            background: #F0FFF0;
+            border-left: 4px solid #00BB00;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+        }
+
+        .warning-text {
+            font-size: 13px;
+            color: #00BB00;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        .step-section {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .step-button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .step-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.3);
+        }
+
+        .step-button:active {
+            transform: translateY(0);
+        }
+
+        .icon {
+            font-size: 20px;
+        }
+
+        .warning-red {
+            color: #FF3333;
+            font-weight: 600;
+            font-size: 13px;
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .hint-text {
+            font-size: 13px;
+            color: #666;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        /* 手指指向动画 */
+        @keyframes point-animation {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-8px) rotate(-5deg);
+            }
+        }
+
+        .pointing-hand {
+            display: inline-block;
+            animation: point-animation 1.5s ease-in-out infinite;
+        }
+
+        /* 响应式设计 */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 640px;
+                padding-top: 20px;
+            }
+
+            body {
+                padding: 40px 20px;
+            }
+
+            .app-card {
+                padding: 48px 32px 40px;
+            }
+
+            .button-group {
+                gap: 16px;
+            }
+
+            .btn {
+                padding: 16px 40px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tutorial-title {
+                font-size: 16px;
+            }
+
+            .app-item {
+                gap: 12px;
+            }
+
+            .app-icon {
+                width: 64px;
+                height: 64px;
+                font-size: 32px;
+            }
+
+            .step-title {
+                font-size: 18px;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部应用卡片 -->
+        <div class="app-card">
+            <div class="app-logo">NO</div>
+            <h1 class="app-name">NO钱包</h1>
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="handleGet()">获取</button>
+                <button class="btn btn-icon" onclick="handleShare()" title="分享">
+                    <span class="icon">↗</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 下载教程卡片 -->
+        <div class="tutorial-card">
+            <h2 class="tutorial-title">AppStore下载和激活教程</h2>
+            <div class="app-item">
+                <div class="app-icon">🧪</div>
+                <div class="app-info">
+                    <div class="app-title">Potion Forge: Puzzle Game</div>
+                    <div class="app-subtitle">9+</div>
+                    <div class="app-author">Hoi Van Hoang</div>
+                    <div class="app-platform">Designed for iPhone</div>
+                    <div class="app-price">Free</div>
+                </div>
+            </div>
+            <div class="warning-box">
+                <div class="warning-text">由于AppStore的限制，上架版本APP图标和名字会有不同，如上图所示，请放心下载，大胆使用！</div>
+            </div>
+        </div>
+
+        <!-- 第一步：下载 -->
+        <div class="step-section">
+            <h2 class="step-title">第一步　下载</h2>
+            <p class="step-description">到AppStore下载并安装【Potion Forge: Puzzle Game】</p>
+            <button class="step-button" onclick="handleDownload()">
+                <span class="icon">📱</span>
+                前往下载
+                <span class="pointing-hand">👆</span>
+            </button>
+        </div>
+
+        <!-- 第二步：激活 -->
+        <div class="step-section">
+            <h2 class="step-title">第二步　激活</h2>
+            <p class="step-description">一定要返回此页面【点击激活】</p>
+            <button class="step-button" onclick="handleActivate()">
+                <span class="icon">NO</span>
+                激活APP
+                <span class="pointing-hand">👆</span>
+            </button>
+            <div class="warning-red">下载完成后，一定要回来点击激活才能使用哦！</div>
+        </div>
+    </div>
+
+    <script>
+        function handleGet() {
+            alert('获取功能被点击');
+        }
+
+        function handleShare() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'NO钱包',
+                    text: '下载NO钱包，开启数字资产管理之旅',
+                    url: window.location.href
+                }).catch(err => console.log('分享失败:', err));
+            } else {
+                alert('已复制分享链接');
+            }
+        }
+
+        function handleDownload() {
+            alert('跳转到App Store下载...');
+            // 实际应用中可以跳转到真实的App Store链接
+        }
+
+        function handleActivate() {
+            const btn = event.target.closest('.step-button');
+            btn.disabled = true;
+            btn.textContent = '激活中...';
+            
+            setTimeout(() => {
+                btn.textContent = '✓ 激活成功';
+                btn.style.background = 'linear-gradient(135deg, #00BB00 0%, #009900 100%)';
+                alert('APP激活成功！');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
