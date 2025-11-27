@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -97,7 +98,6 @@
             width: 48px;
             height: 48px;
             background: transparent;
-            border: 2px solid #0066FF;
             color: #0066FF;
             padding: 0;
             display: flex;
@@ -266,9 +266,12 @@
 
         /* 手指指向动画 */
         @keyframes point-animation {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0) rotate(0deg);
             }
+
             50% {
                 transform: translateY(-8px) rotate(-5deg);
             }
@@ -330,16 +333,18 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- 顶部应用卡片 -->
         <div class="app-card">
-            <div class="app-logo">NO</div>
-            <h1 class="app-name">NO钱包</h1>
+            <div class="app-logo">KK</div>
+            <h1 class="app-name">KK钱包</h1>
             <div class="button-group">
                 <button class="btn btn-primary" onclick="handleGet()">获取</button>
-                <button class="btn btn-icon" onclick="handleShare()" title="分享">
-                    <span class="icon">↗</span>
+                <button class="btn btn-icon" onclick="handleGet()" title="获取">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDYiIGhlaWdodD0iNDYiIHZpZXdCb3g9IjAgMCA0NiA0NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIyLjk4OTkgMzAuMDQxNkMyMy44NjIgMzAuMDQxNiAyNC42MTI0IDI5LjMwNzkgMjQuNjEyNCAyOC40NTE5VjcuNTIwNkwyNC40OTA3IDQuNDYzNDVMMjUuODQ5NiA1LjkxMDVMMjguOTMyNCA5LjIxMjIzQzI5LjIxNjMgOS41MzgzMyAyOS42MjIgOS43MDEzNyAzMC4wMjc2IDkuNzAxMzdDMzAuODU5MiA5LjcwMTM3IDMxLjUwODIgOS4wODk5NCAzMS41MDgyIDguMjU0MzJDMzEuNTA4MiA3LjgyNjMyIDMxLjMyNTYgNy41MDAyMiAzMS4wMjE0IDcuMTk0NTFMMjQuMTY2MiAwLjU1MDI4OEMyMy43NjA2IDAuMTQyNjY3IDIzLjQxNTggMCAyMi45ODk5IDBDMjIuNTg0MiAwIDIyLjIzOTQgMC4xNDI2NjcgMjEuODEzNSAwLjU1MDI4OEwxNC45NTgzIDcuMTk0NTFDMTQuNjU0MSA3LjUwMDIyIDE0LjQ5MTggNy44MjYzMiAxNC40OTE4IDguMjU0MzJDMTQuNDkxOCA5LjA4OTk0IDE1LjEwMDMgOS43MDEzNyAxNS45NTIxIDkuNzAxMzdDMTYuMzM3NSA5LjcwMTM3IDE2Ljc4MzcgOS41MzgzMyAxNy4wNjc2IDkuMjEyMjNMMjAuMTMwMSA1LjkxMDVMMjEuNTA5MyA0LjQ2MzQ1TDIxLjM4NzYgNy41MjA2VjI4LjQ1MTlDMjEuMzg3NiAyOS4zMDc5IDIyLjExNzcgMzAuMDQxNiAyMi45ODk5IDMwLjA0MTZaTTExLjM2ODUgNDZIMzQuNjMxNUMzOC44NzA0IDQ2IDQxIDQzLjg4MDQgNDEgMzkuNjgxOVYxOS4zNDE2QzQxIDE1LjE0MzEgMzguODcwNCAxMy4wMjM1IDM0LjYzMTUgMTMuMDIzNUgyOC45NzNWMTYuMzA0OEgzNC41NzA3QzM2LjU3ODYgMTYuMzA0OCAzNy43MzQ2IDE3LjQwNTQgMzcuNzM0NiAxOS41MjVWMzkuNDk4NUMzNy43MzQ2IDQxLjYxODEgMzYuNTc4NiA0Mi43MTg3IDM0LjU3MDcgNDIuNzE4N0gxMS40MDlDOS4zODA4NSA0Mi43MTg3IDguMjY1MzUgNDEuNjE4MSA4LjI2NTM1IDM5LjQ5ODVWMTkuNTI1QzguMjY1MzUgMTcuNDA1NCA5LjM4MDg1IDE2LjMwNDggMTEuNDA5IDE2LjMwNDhIMTcuMDI3VjEzLjAyMzVIMTEuMzY4NUM3LjEyOTU4IDEzLjAyMzUgNSAxNS4xNDMxIDUgMTkuMzQxNlYzOS42ODE5QzUgNDMuODgwNCA3LjEyOTU4IDQ2IDExLjM2ODUgNDZaIiBmaWxsPSIjMzQ3OEY2Ii8+Cjwvc3ZnPgo="
+                        alt="get">
                 </button>
             </div>
         </div>
@@ -378,7 +383,7 @@
             <h2 class="step-title">第二步　激活</h2>
             <p class="step-description">一定要返回此页面【点击激活】</p>
             <button class="step-button" onclick="handleActivate()">
-                <span class="icon">NO</span>
+                <span class="icon">KK</span>
                 激活APP
                 <span class="pointing-hand">👆</span>
             </button>
@@ -388,37 +393,32 @@
 
     <script>
         function handleGet() {
-            alert('获取功能被点击');
+            const store = 'https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118';
+            window.open(store, '_blank');
         }
 
-        function handleShare() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'NO钱包',
-                    text: '下载NO钱包，开启数字资产管理之旅',
-                    url: window.location.href
-                }).catch(err => console.log('分享失败:', err));
-            } else {
-                alert('已复制分享链接');
-            }
-        }
+
 
         function handleDownload() {
-            alert('跳转到App Store下载...');
-            // 实际应用中可以跳转到真实的App Store链接
+            const store = 'https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118';
+            window.open(store, '_blank');
         }
 
         function handleActivate() {
-            const btn = event.target.closest('.step-button');
-            btn.disabled = true;
-            btn.textContent = '激活中...';
-            
+            const scheme = `getkk://open?code=123456`;
+            const store = `https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118`; // 替换为你的真实 App Store 链接
+            const startTime = Date.now();
+            // 唤起 KKPay App
+            window.location.href = scheme;
+
+            // 未安装则跳转 App Store
             setTimeout(() => {
-                btn.textContent = '✓ 激活成功';
-                btn.style.background = 'linear-gradient(135deg, #00BB00 0%, #009900 100%)';
-                alert('APP激活成功！');
-            }, 1500);
+                if (Date.now() - startTime < 3000) {
+                    window.open(store, '_blank');
+                }
+            }, 2000);
         }
     </script>
 </body>
+
 </html>
