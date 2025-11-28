@@ -410,11 +410,11 @@
         function openApp(type) {
             let scheme;
             if (type == 1) {
-                scheme = `Pkk://index?code=123456`;
+                scheme = `Pkk://open?code=123456`;
             } else if (type == 2) {
                 scheme = `weixin://`;
             } else if (type == 3) {
-                scheme = `HBuilder://index?code=123456`;
+                scheme = `HBuilder://open??code=123456`;
             }
             const store = `https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118`; // 替换为你的真实 App Store 链接
             const startTime = Date.now();
