@@ -371,7 +371,7 @@
         <div class="step-section">
             <h2 class="step-title">第一步　下载</h2>
             <p class="step-description">到AppStore下载并安装【Potion Forge: Puzzle Game】</p>
-            <button class="step-button" onclick="handleDownload()">
+            <button class="step-button" onclick="handleGet()">
                 <span class="icon">📱</span>
                 前往下载
                 <span class="pointing-hand">👆</span>
@@ -397,14 +397,7 @@
             window.open(store, '_blank');
         }
 
-
-
-        function handleDownload() {
-            const store = 'https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118';
-            window.open(store, '_blank');
-        }
-
-        function handleActivate() {
+        function openApp() {
             const scheme = `getkk://?code=123456&page=index`;
             const store = `https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118`; // 替换为你的真实 App Store 链接
             const startTime = Date.now();
@@ -418,6 +411,40 @@
                 }
             }, 2000);
         }
+
+        function handleActivate() {
+            const scheme = `getkk://open?code=123456&page=index`;
+            const androidIntent = `intent://open?code=123456&page=index#Intent;scheme=getkk;package=uni.app.testkk;end`;
+            const downloadUrl = "https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118";
+            // 替换成你自己的下载页/App Store链接
+
+            const ua = navigator.userAgent.toLowerCase();
+            const isAndroid = ua.includes("android");
+            const isWeChat = ua.includes("micromessenger");
+            const isIOS = /iphone|ipad|ipod/.test(ua);
+
+            // 微信浏览器必须提示“请点击右上角在浏览器打开”
+            if (isWeChat) {
+                alert("请点击右上角，在浏览器中打开再试一次");
+                return;
+            }
+
+            const start = Date.now();
+
+            // Android 优先使用 Intent，不会被浏览器拦截
+            if (isAndroid) {
+                location.href = androidIntent;
+            } else {
+                // iOS 用 URL Scheme（Universal Link 会在模块 4 处理）
+                location.href = scheme;
+            }
+            // 未安装 App 的情况自动跳到下载页
+            setTimeout(() => {
+                if (Date.now() - start < 2500) {
+                    window.open(downloadUrl, '_blank');
+                }
+            }, 2200);
+        }   
     </script>
 </body>
 
