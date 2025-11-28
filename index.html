@@ -393,6 +393,11 @@
                 激活APP
                 <span class="pointing-hand">👆</span>
             </button>
+            <button class="step-button" onclick="openApp(3)">
+                <span class="icon">MP-qq</span>
+                激活APP
+                <span class="pointing-hand">👆</span>
+            </button>
         </div>
     </div>
 
@@ -405,9 +410,11 @@
         function openApp(type) {
             let scheme;
             if (type == 1) {
-                scheme = `testkk://dl/business/?t=u1lt6hnm1Nt`;
+                scheme = `testkk://index?code=123456`;
             } else if (type == 2) {
-                scheme = `weixin://dl/business/?t=u1lt6hnm1Nt`;
+                scheme = `weixin://`;
+            } else if (type == 3) {
+                scheme = `qq://dl/business/?t=u1lt6hnm1Nt`;
             }
             const store = `https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118`; // 替换为你的真实 App Store 链接
             const startTime = Date.now();
