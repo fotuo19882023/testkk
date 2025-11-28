@@ -96,13 +96,13 @@
         <h1>🚀 唤起App测试</h1>
 
         <!-- 最简唤起 -->
-        <a href="testkk://" class="btn">1️⃣ 直接唤起App</a>
+        <button onclick="openApp('testkk://')" class="btn">1️⃣ 直接唤起App</button>
 
         <!-- 带参数唤起 -->
-        <a href="testkk://?code=123456&type=test" class="btn">2️⃣ 带参数唤起</a>
+        <button onclick="openApp('testkk://?code=123456&type=test')" class="btn">2️⃣ 带参数唤起</button>
 
         <!-- 跳转页面 -->
-        <a href="testkk://pages/index/index?code=123456" class="btn">3️⃣ 唤起并跳转页面ss</a>
+        <button onclick="openApp('testkk://pages/index/index?code=123456')" class="btn">3️⃣ 唤起并跳转页面1</button>
 
         <div class="info">
             <h3>📝 使用说明</h3>
@@ -112,6 +112,54 @@
             <p>4. 当前使用的Scheme: <code>testkk://</code></p>
         </div>
     </div>
+
+    <script>
+        // 唤起App函数
+        function openApp(url) {
+            // 记录当前时间
+            var startTime = Date.now();
+
+            // 检测是否为安卓设备
+            var isAndroid = navigator.userAgent.match(/Android/i);
+
+            try {
+                if (isAndroid) {
+                    // 安卓设备特殊处理
+                    // 方法1: 使用iframe唤起
+                    var iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.src = url;
+                    document.body.appendChild(iframe);
+
+                    setTimeout(function () {
+                        document.body.removeChild(iframe);
+                    }, 500);
+
+                    // 方法2: 同时尝试使用window.location.href
+                    setTimeout(function () {
+                        window.location.href = url;
+                    }, 100);
+                } else {
+                    // iOS设备直接使用location.href
+                    window.location.href = url;
+                }
+
+                // 定时器检查是否唤起成功
+                setTimeout(function () {
+                    var endTime = Date.now();
+                    // 如果500ms内页面没有隐藏，说明唤起失败
+                    if (endTime - startTime < 1200) {
+                        // 可以在这里添加失败后的处理，比如跳转到应用商店
+                        console.log('App唤起失败');
+                        alert('App唤起失败，请检查是否已安装App');
+                    }
+                }, 1000);
+            } catch (e) {
+                console.error('唤起App出错:', e);
+                alert('唤起App出错，请稍后重试');
+            }
+        }
+    </script>
 </body>
 
 </html>
