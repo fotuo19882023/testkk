@@ -381,8 +381,8 @@
         <!-- 第二步：激活 -->
         <div class="step-section">
             <h2 class="step-title">第二步　激活</h2>
-            <p class="step-description">一定要返回此页面【点击激活】</p>
-            <button class="step-button" onclick="handleActivate()">
+            <p class="step-description">一定要返回此页面【点击激活】s</p>
+            <button class="step-button" onclick="openApp()">
                 <span class="icon">KK</span>
                 激活APP
                 <span class="pointing-hand">👆</span>
@@ -398,7 +398,7 @@
         }
 
         function openApp() {
-            const scheme = `getkk://?code=123456&page=index`;
+            const scheme = `weixin://dl/business/?t=u1lt6hnm1Nt`;
             const store = `https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118`; // 替换为你的真实 App Store 链接
             const startTime = Date.now();
             // 唤起 KKPay App
