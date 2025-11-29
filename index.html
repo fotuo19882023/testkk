@@ -393,6 +393,7 @@
                 激活APP
                 <span class="pointing-hand">👆</span>
             </button>
+             <div class="warning-red">下载完成后，一定要回来点击激活才能使用哦！</div>
             <button class="step-button" onclick="openApp(3)">
                 <span class="icon">MP-HBuilder</span>
                 激活APP
@@ -410,11 +411,11 @@
         function openApp(type) {
             let scheme;
             if (type == 1) {
-                scheme = `Pkk://open?code=1`;
+                scheme = `Pkk://open?code=123456`;
             } else if (type == 2) {
                 scheme = `weixin://`;
             } else if (type == 3) {
-                scheme = `HBuilder://open?code=1`;
+                scheme = `HBuilder://open?code=123456`;
             }
             const store = `https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118`; // 替换为你的真实 App Store 链接
             const startTime = Date.now();
