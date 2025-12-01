@@ -403,24 +403,82 @@
     </div>
 
     <script>
+        // 存储API返回的数据
+        let appConfig = null;
+        
+        // 获取API数据的函数
+        function fetchAppConfig() {
+            const apiUrl = 'http://api.chongbros.com/v1/official/download/vest/config?id=1';
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', apiUrl, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    try {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.code === 0 && response.data) {
+                            // 存储配置数据
+                            appConfig = response.data;
+                            console.log('appConfig: ', appConfig);
+                            // 更新页面内容
+                            updatePageContent();
+                        } else {
+                            showError('获取配置失败，请稍后重试');
+                        }
+                    } catch (error) {
+                        
+                        showError('数据解析失败，请稍后重试');
+                    }
+                } else {
+                    showError('网络请求失败，请检查网络连接');
+                }
+            };
+            xhr.onerror = function() {
+                showError('网络连接错误，请检查网络后重试');
+            };
+            xhr.send();
+        }
+        
         function handleGet() {
-            // const store = 'https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118';
-            const store = 'https://www.xcxwo.com/Pkk-ios';
+            // 使用API数据中的shopAddress或默认值
+            const store = appConfig?.shopAddress || 'https://www.xcxwo.com/Pkk-ios';
             window.open(store, '_blank');
         }
 
+        // 更新页面内容
+        function updatePageContent() {
+            if (!appConfig) return;
+            // 更新应用名称
+            const appNameElement = document.querySelector('.app-name');
+            if (appNameElement && appConfig.vestName) {
+                appNameElement.textContent = appConfig.vestName;
+            }
+            // 更新应用商店地址显示
+            
+        }
+        
+        // 显示错误信息
+        function showError(message) {
+            throw new Error(message);
+        }
+        
         function openApp(type) {
+            // 使用API数据中的协议和激活码
+            const wakeUpProtocol = appConfig?.wakeUpProtocol || 'Pkk://';
+            const activateCode = appConfig?.activateCode || '123456';
+            const store = appConfig?.shopAddress || 'https://www.xcxwo.com/Pkk-ios';
+            
             let scheme;
             if (type == 1) {
-                scheme = `Pkk://open?code=123456`;
+                scheme = `${wakeUpProtocol}open?code=${activateCode}`;
             } else if (type == 2) {
                 scheme = `weixin://`;
             } else if (type == 3) {
-                scheme = `HBuilder://open?code=123456`;
+                scheme = `HBuilder://open?code=${activateCode}`;
             }
-            const store = `https://www.xcxwo.com/Pkk-ios`; // 替换为你的真实 App Store 链接
+            
             const startTime = Date.now();
-            // 唤起 KKPay App
+            // 唤起 App
             window.location.href = scheme;
 
             // 未安装则跳转 App Store
@@ -432,12 +490,14 @@
         }
 
         function handleActivate() {
-            // const scheme = `getkk://open?code=123456&page=index`;
-            const scheme = `weixin://dl/business/?t=u1lt6hnm1Nt`;
-            const androidIntent = `intent://open?code=123456&page=index#Intent;scheme=weixin;package=__UNI__1784B00;end`;
-            const downloadUrl = "https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118";
-            // 替换成你自己的下载页/App Store链接
-
+            // 使用API数据中的协议和激活码
+            const wakeUpProtocol = appConfig?.wakeUpProtocol || 'Pkk://';
+            const activateCode = appConfig?.activateCode || '123456';
+            const store = appConfig?.shopAddress || 'https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118';
+            
+            const scheme = `${wakeUpProtocol}open?code=${activateCode}&page=index`;
+            const androidIntent = `intent://open?code=${activateCode}&page=index#Intent;scheme=${wakeUpProtocol.replace('://', '')};package=__UNI__1784B00;end`;
+            
             const ua = navigator.userAgent.toLowerCase();
             const isAndroid = ua.includes("android");
             const isWeChat = ua.includes("micromessenger");
@@ -455,16 +515,21 @@
             if (isAndroid) {
                 location.href = androidIntent;
             } else {
-                // iOS 用 URL Scheme（Universal Link 会在模块 4 处理）
+                // iOS 用 URL Scheme
                 location.href = scheme;
             }
             // 未安装 App 的情况自动跳到下载页
             setTimeout(() => {
                 if (Date.now() - start < 2500) {
-                    window.open(androidIntent, '_blank');
+                    window.open(store, '_blank');
                 }
             }, 2200);
-        }   
+        }
+        
+        // 页面加载完成后自动获取配置
+        window.onload = function() {
+            fetchAppConfig();
+        };   
     </script>
 </body>
 
