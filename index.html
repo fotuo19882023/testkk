@@ -387,7 +387,7 @@
                 <span class="pointing-hand">👆</span>
             </button>
             <div class="warning-red">下载完成后，一定要回来点击激活才能使用哦！</div>
-            <button class="step-button" onclick="openApp(2)">
+            <!-- <button class="step-button" onclick="openApp(2)">
                 <span class="icon">MP-WEIXIN</span>
                 激活APP
                 <span class="pointing-hand">👆</span>
@@ -397,7 +397,7 @@
                 <span class="icon">MP-HBuilder</span>
                 激活APP
                 <span class="pointing-hand">👆</span>
-            </button>
+            </button> -->
         </div>
     </div>
 
@@ -482,7 +482,7 @@
         function openApp(type) {
             // 使用API数据中的协议和激活码
             const wakeUpProtocol = appConfig?.wakeUpProtocol || 'Pkk://';
-            const activateCode = appConfig?.activateCode || '123456';
+            const activateCode = appConfig?.activateCode || 'test123456';
             const store = appConfig?.shopAddress || 'https://www.xcxwo.com/Pkk-ios';
 
             let scheme;
