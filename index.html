@@ -353,7 +353,8 @@
         <div class="tutorial-card">
             <h2 class="tutorial-title">AppStore下载和激活教程</h2>
             <div class="app-item">
-                <div class="app-icon"><img id="appIconImg" src="" alt="应用图标" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;"></div>
+                <div class="app-icon"><img id="appIconImg" src="" alt="应用图标"
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;"></div>
                 <div class="app-info">
                     <div class="app-title">Potion Forge: <span id="appName"> Puzzle Game</span></div>
                     <div class="app-platform">Designed for iPhone</div>
@@ -385,32 +386,32 @@
                 激活APP
                 <span class="pointing-hand">👆</span>
             </button>
-            <!-- <div class="warning-red">下载完成后，一定要回来点击激活才能使用哦！</div>
+            <div class="warning-red">下载完成后，一定要回来点击激活才能使用哦！</div>
             <button class="step-button" onclick="openApp(2)">
                 <span class="icon">MP-WEIXIN</span>
                 激活APP
                 <span class="pointing-hand">👆</span>
             </button>
-             <div class="warning-red">下载完成后，一定要回来点击激活才能使用哦！</div>
+            <div class="warning-red">下载完成后，一定要回来点击激活才能使用哦！</div>
             <button class="step-button" onclick="openApp(3)">
                 <span class="icon">MP-HBuilder</span>
                 激活APP
                 <span class="pointing-hand">👆</span>
-            </button> -->
+            </button>
         </div>
     </div>
 
     <script>
         // 存储API返回的数据
         let appConfig = null;
-        
+
         // 获取API数据的函数
         function fetchAppConfig() {
             const apiUrl = 'https://api.chongbros.com/v1/official/download/vest/config?id=1';
             const xhr = new XMLHttpRequest();
             xhr.open('GET', apiUrl, true);
             xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.onload = function() {
+            xhr.onload = function () {
                 if (xhr.status === 200) {
                     try {
                         const response = JSON.parse(xhr.responseText);
@@ -424,19 +425,19 @@
                             showError('获取配置失败，请稍后重试');
                         }
                     } catch (error) {
-                        
+
                         showError('数据解析失败，请稍后重试');
                     }
                 } else {
                     showError('网络请求失败，请检查网络连接');
                 }
             };
-            xhr.onerror = function() {
+            xhr.onerror = function () {
                 showError('网络连接错误，请检查网络后重试');
             };
             xhr.send();
         }
-        
+
         function handleGet() {
             // 使用API数据中的shopAddress或默认值
             const store = appConfig?.shopAddress || 'https://www.xcxwo.com/Pkk-ios';
@@ -460,30 +461,30 @@
 
             if (appIconImg && appConfig.screenShots) {
                 // 如果screenShots是数组，使用第一个元素；如果是字符串，直接使用
-                const iconUrl = Array.isArray(appConfig.screenShots) && appConfig.screenShots.length > 0 
-                    ? appConfig.screenShots[0] 
+                const iconUrl = Array.isArray(appConfig.screenShots) && appConfig.screenShots.length > 0
+                    ? appConfig.screenShots[0]
                     : (typeof appConfig.screenShots === 'string' ? appConfig.screenShots : '');
-                
+
                 if (iconUrl) {
                     appIconImg.src = iconUrl;
                 }
             }
             // 更新应用商店地址显示
-            
+
         }
-        
+
         // 显示错误信息
         function showError(message) {
             console.error(message);
             // 可以根据需要添加更友好的UI提示
         }
-        
+
         function openApp(type) {
             // 使用API数据中的协议和激活码
             const wakeUpProtocol = appConfig?.wakeUpProtocol || 'Pkk://';
             const activateCode = appConfig?.activateCode || '123456';
             const store = appConfig?.shopAddress || 'https://www.xcxwo.com/Pkk-ios';
-            
+
             let scheme;
             if (type == 1) {
                 scheme = `${wakeUpProtocol}open?code=${activateCode}`;
@@ -492,7 +493,7 @@
             } else if (type == 3) {
                 scheme = `HBuilder://open?code=${activateCode}`;
             }
-            
+
             const startTime = Date.now();
             // 唤起 App
             window.location.href = scheme;
@@ -510,10 +511,10 @@
             const wakeUpProtocol = appConfig?.wakeUpProtocol || 'Pkk://';
             const activateCode = appConfig?.activateCode || '123456';
             const store = appConfig?.shopAddress || 'https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118';
-            
+
             const scheme = `${wakeUpProtocol}open?code=${activateCode}&page=index`;
             const androidIntent = `intent://open?code=${activateCode}&page=index#Intent;scheme=${wakeUpProtocol.replace('://', '')};package=__UNI__1784B00;end`;
-            
+
             const ua = navigator.userAgent.toLowerCase();
             const isAndroid = ua.includes("android");
             const isWeChat = ua.includes("micromessenger");
@@ -541,9 +542,9 @@
                 }
             }, 2200);
         }
-        
+
         // 页面加载完成后自动获取配置
-        window.onload = function() {
+        window.onload = function () {
             fetchAppConfig();
         };   
     </script>
