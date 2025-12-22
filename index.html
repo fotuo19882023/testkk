@@ -407,7 +407,7 @@
 
         // 获取API数据的函数
         function fetchAppConfig() {
-            const apiUrl = 'https://api.chongbros.com/v1/official/download/vest/config?id=1';
+            const apiUrl = 'https://api.chongbros.com/v1/official/download/vest/config?id=2';
             const xhr = new XMLHttpRequest();
             xhr.open('GET', apiUrl, true);
             xhr.setRequestHeader('Content-Type', 'application/json');
@@ -481,7 +481,7 @@
 
         function openApp(type) {
             // 使用API数据中的协议和激活码
-            const wakeUpProtocol = appConfig?.wakeUpProtocol || 'Pkk://';
+            const wakeUpProtocol = appConfig?.wakeUpProtocol || 'KKTalkBot://';
             const activateCode = appConfig?.activateCode || 'test123456';
             const store = appConfig?.shopAddress || 'https://www.xcxwo.com/Pkk-ios';
 
@@ -508,7 +508,7 @@
 
         function handleActivate() {
             // 使用API数据中的协议和激活码
-            const wakeUpProtocol = appConfig?.wakeUpProtocol || 'Pkk://';
+            const wakeUpProtocol = appConfig?.wakeUpProtocol || 'KKTalkBot://';
             const activateCode = appConfig?.activateCode || '123456';
             const store = appConfig?.shopAddress || 'https://apps.apple.com/us/app/potion-forge-puzzle-game/id6751887118';
 
